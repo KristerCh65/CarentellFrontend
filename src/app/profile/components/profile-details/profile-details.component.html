@@ -1,0 +1,69 @@
+
+<div class="tab-pane fade show active" id="settings" role="tabpanel">
+    <div class="acccount-settings">
+        <h4 class="mb-4">Profile information</h4>
+        <form [formGroup]="profileForm">
+            <div class="form-row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" formControlName="name" placeholder="John">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" formControlName="lastName" placeholder="Jas">
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="form-group mb-4">
+                <label>Display name </label>
+                <input type="text" class="form-control" placeholder="Jassa">
+                <p class="mt-2"> This will be how your name will be displayed in the account section and
+                    in reviews</p>
+            </div> -->
+            <div class="form-row mb-4">
+                <div class="col-lg-6">
+                    <label>DNI</label>
+                    <input type="text" class="form-control" formControlName="dni" placeholder="050119995555">
+                </div>
+                <div class="col-lg-6">
+                    <label>Phone Number</label>
+                    <input type="text" class="form-control" formControlName="phone" placeholder="+504 9999-8888">
+                </div>
+            </div>
+            <div class="form-group mb-4">
+                <label>Email address </label>
+                <input type="text" class="form-control" formControlName="correo" placeholder="therichposts@gmail.com">
+            </div>
+
+            <h4 class="mb-4 mt-5">Address Info</h4>
+
+            <ng-container formGroupName="address">
+                <div class="form-row mb-4">
+                    <div class="col-lg-6">
+                        <label>Departmento </label>
+                        <input type="text" class="form-control" formControlName="departmentID" placeholder="Cortes">
+                    </div>
+                    <div class="col-lg-6">
+                        <label>Municipio </label>
+                        <input type="text" class="form-control" formControlName="townshipId" placeholder="Cortes">
+                    </div>
+                </div>
+                <div class="form-group mb-4">
+                    <label>Barrio o colonia </label>
+                    <input type="text" class="form-control" formControlName="neighborhood" placeholder="">
+                </div>
+                <div class="form-group mb-4">
+                    <label>Referencias </label>
+                    <input type="text" class="form-control" formControlName="references" placeholder="">
+                </div>
+            </ng-container>
+
+            <button (click)="showFormValue()" class="btn btn-dark">Save Changes</button>
+        </form>
+
+    </div>
+</div>
