@@ -1,0 +1,27 @@
+<div class="product" style="cursor: pointer" (click)="viewDetails(car?.id)">
+    <div class="product-wrap">
+        <a><img class="img-fluid w-100 mb-3 img-first car-cover"
+                [src]="getFirstPicture(car)" alt="product-img" /></a>
+    </div>
+
+    <span *ngIf="car?.isSale" class="onsale">Sale</span>
+    <div class="product-hover-overlay">
+        <a href="#"><i class="tf-ion-android-cart"></i></a>
+        <a href="#"><i class="tf-ion-ios-heart"></i></a>
+    </div>
+
+    <div class="product-info">
+        <h2 class="product-title h5 mb-0"><a>{{ car?.make?.description }} {{ car?.model?.description }}</a></h2>
+        <div class="container">
+            <div class="row">
+                <ul class="list-inline">
+                    <!-- <li class="list-inline-item product-feature-item"><i class="tf-ion-android-car"></i>Marca</li>
+                    <li class="list-inline-item product-feature-item"><i class="tf-ion-android-checkmark-circle"></i>Modelo</li> -->
+                    <li class="list-inline-item product-feature-item"><i class="tf-ion-ios-timer-outline"></i>{{ car?.kilometers}}</li>
+                    <li class="list-inline-item product-feature-item"><i class="tf-ion-android-calendar"></i>{{ car?.year}}</li>
+                    <li class="list-inline-item product-feature-item"><i class="tf-ion-cash"></i>L. {{ car?.price}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

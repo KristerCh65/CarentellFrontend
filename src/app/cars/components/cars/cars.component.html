@@ -48,150 +48,40 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-4 col-12 col-md-6 col-sm-6 mb-5">
-                        <div class="product">
+                    <div class="col-lg-4 col-12 col-md-6 col-sm-6 mb-5" *ngFor="let car of cars">
+
+                        <app-car-item [car]="car"></app-car-item>
+
+                        <!-- <div class="product">
                             <div class="product-wrap">
-                                <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-first"
-                                        src="assets/images/322.jpg" alt="product-img" /></a>
-                                <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-second"
-                                        src="assets/images/444.jpg" alt="product-img" /></a>
+                                <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-first car-cover"
+                                        [src]="car.photos[0].photoURL" alt="product-img" /></a>
                             </div>
 
-                            <span class="onsale">Sale</span>
+                            <span *ngIf="car.isSale" class="onsale">Sale</span>
                             <div class="product-hover-overlay">
                                 <a href="#"><i class="tf-ion-android-cart"></i></a>
                                 <a href="#"><i class="tf-ion-ios-heart"></i></a>
                             </div>
 
                             <div class="product-info">
-                                <h2 class="product-title h5 mb-0"><a routerLink="/product-single">Floral Kirby</a></h2>
-                                <span class="price">
-                                    $329.10
-                                </span>
+                                <h2 class="product-title h5 mb-0"><a routerLink="/product-single">{{ car.make.description }} {{ car.model.description }}</a></h2>
+                                <div class="container">
+                                    <div class="row">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item product-feature-item"><i class="tf-ion-android-car"></i>Marca</li>
+                                            <li class="list-inline-item product-feature-item"><i class="tf-ion-android-checkmark-circle"></i>Modelo</li>
+                                            <li class="list-inline-item product-feature-item"><i class="tf-ion-ios-timer-outline"></i>Kilometros</li>
+                                            <li class="list-inline-item product-feature-item"><i class="tf-ion-android-calendar"></i>año</li>
+                                            <li class="list-inline-item product-feature-item"><i class="tf-ion-cash"></i>$399.00</li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </div> -->
+
+
                     </div>
-
-                    <div class="col-lg-4 col-12 col-md-6 col-sm-6 mb-5">
-                        <div class="product">
-                            <div class="product-wrap">
-                                <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-first"
-                                        src="assets/images/111.jpg" alt="product-img" /></a>
-                                <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-second"
-                                        src="assets/images/444.jpg" alt="product-img" /></a>
-                            </div>
-
-                            <div class="product-hover-overlay">
-                                <a href="#"><i class="tf-ion-android-cart"></i></a>
-                                <a href="#"><i class="tf-ion-ios-heart"></i></a>
-                            </div>
-
-                            <div class="product-info">
-                                <h2 class="product-title h5 mb-0"><a routerLink="/product-single">Open knit switer</a>
-                                </h2>
-                                <span class="price">
-                                    $29.10
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-12 col-md-6 col-sm-6 mb-5">
-                        <div class="product">
-                            <div class="product-wrap">
-                                <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-first"
-                                        src="assets/images/222.jpg" alt="product-img" /></a>
-                                <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-second"
-                                        src="assets/images/322.jpg" alt="product-img" /></a>
-                            </div>
-
-                            <span class="onsale">Sale</span>
-                            <div class="product-hover-overlay">
-                                <a href="#"><i class="tf-ion-android-cart"></i></a>
-                                <a href="#"><i class="tf-ion-ios-heart"></i></a>
-                            </div>
-
-                            <div class="product-info">
-                                <h2 class="product-title h5 mb-0"><a routerLink="/product-single">Official trendy</a>
-                                </h2>
-                                <span class="price">
-                                    $350.00 – $355.00
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-12 col-md-6 col-sm-6 mb-5">
-                        <div class="product">
-                            <div class="product-wrap">
-                                <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-first"
-                                        src="assets/images/322.jpg" alt="product-img" /></a>
-                                <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-second"
-                                        src="assets/images/111.jpg" alt="product-img" /></a>
-                            </div>
-
-                            <div class="product-hover-overlay">
-                                <a href="#"><i class="tf-ion-android-cart"></i></a>
-                                <a href="#"><i class="tf-ion-ios-heart"></i></a>
-                            </div>
-
-                            <div class="product-info">
-                                <h2 class="product-title h5 mb-0"><a routerLink="/product-single">Frock short</a></h2>
-                                <span class="price">
-                                    $249
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-12 col-md-6 col-sm-6 mb-5">
-                        <div class="product">
-                            <div class="product-wrap">
-                                <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-first"
-                                        src="assets/images/444.jpg" alt="product-img" /></a>
-                                <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-second"
-                                        src="assets/images/222.jpg" alt="product-img" /></a>
-                            </div>
-
-                            <div class="product-hover-overlay">
-                                <a href="#"><i class="tf-ion-android-cart"></i></a>
-                                <a href="#"><i class="tf-ion-ios-heart"></i></a>
-                            </div>
-
-                            <div class="product-info">
-                                <h2 class="product-title h5 mb-0"><a routerLink="/product-single">Sleeve dress</a></h2>
-                                <span class="price">
-                                    $59.10
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-12 col-md-6 col-sm-6 mb-5">
-                        <div class="product">
-                            <div class="product-wrap">
-                                <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-first"
-                                        src="assets/images/322.jpg" alt="product-img" /></a>
-                                <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-second"
-                                        src="assets/images/222.jpg" alt="product-img" /></a>
-                            </div>
-
-                            <div class="product-hover-overlay">
-                                <a href="#"><i class="tf-ion-android-cart"></i></a>
-                                <a href="#"><i class="tf-ion-ios-heart"></i></a>
-                            </div>
-
-                            <div class="product-info">
-                                <h2 class="product-title h5 mb-0"><a routerLink="/product-single">Stylish dress</a></h2>
-                                <span class="price">
-                                    $99.00
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-
-
 
                     <div class="col-12">
                         <nav aria-label="Page navigation">
@@ -261,12 +151,16 @@
 
                     <!-- size -->
                     <section class="widget widget-sizes mb-5">
-                        <h3 class="widget-title h4 mb-4">Shop by Sizes</h3>
-                        <div class="custom-control custom-checkbox">
+                        <h3 class="widget-title h4 mb-4">Shop by Categories</h3>
+
+                        <app-categories-filters></app-categories-filters>
+                        
+                        <!-- <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="size1" checked>
                             <label class="custom-control-label" for="size1">L Large</label>
-                        </div>
-                        <div class="custom-control custom-checkbox">
+                        </div> -->
+
+                        <!-- <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="size2">
                             <label class="custom-control-label" for="size2">XL Extra Large</label>
                         </div>
@@ -281,7 +175,7 @@
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="size5">
                             <label class="custom-control-label" for="size5">XS Extra Small</label>
-                        </div>
+                        </div> -->
                     </section>
 
                     <button type="button" class="btn btn-black btn-small">Filter</button>

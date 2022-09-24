@@ -2,7 +2,7 @@ import { Address } from "./address";
 import { SocialMedia } from "./social-media";
 
 export interface Contact{
-    id: number;
+    contactID: number;
     birthDate: Date;
     correo: string;
     dni: string;

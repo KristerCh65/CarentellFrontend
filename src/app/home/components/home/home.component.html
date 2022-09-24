@@ -72,8 +72,11 @@
   
   
       <div class="row">
-        <div class="col-lg-3 col-12 col-md-6 col-sm-6 mb-5" >
-            <div class="product">
+
+        <div class="col-lg-3 col-12 col-md-6 col-sm-6 mb-5" *ngFor="let car of cars">
+
+          <app-home-car-item [car]="car"></app-home-car-item>
+            <!-- <div class="product">
               <div class="product-wrap">
                   <a routerLink="/home/product-details"><img class="img-fluid w-100 mb-3 img-first" src="assets/images/322.jpg" alt="product-img" /></a>
                   <a routerLink="/home/product-details"><img class="img-fluid w-100 mb-3 img-second" src="assets/images/444.jpg" alt="product-img" /></a>
@@ -91,7 +94,7 @@
                       $329.10
                   </span>
               </div>
-          </div>
+            </div> -->
         </div>
   
         <div class="col-lg-3 col-12 col-md-6 col-sm-6 mb-5">

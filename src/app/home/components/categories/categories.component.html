@@ -10,16 +10,16 @@
 
         <div class="row">
 
-            <div class="col-lg-4 col-sm-12 col-md-6">
-                <div style="height: 300px; cursor: pointer" class="card category-item mb-4 mb-lg-0" routerLink="/cars">
-                    <img src="assets/images/land-cruiser-pickup.png" alt="" class="category-image">
+            <div class="col-lg-4 col-sm-12 col-md-6" *ngFor="let category of categories">
+                <div style="height: 300px; cursor: pointer" class="card category-item mb-4 mb-lg-0" (click)="showCarsList(category.categoryId)">
+                    <img [src]="category.imageURL" alt="" class="category-image">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Pick Up</h5>
+                        <h5 class="card-title text-center">{{ category.description }}</h5>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-4 col-sm-12 col-md-6">
+            <!-- <div class="col-lg-4 col-sm-12 col-md-6">
                 <div style="height: 300px;" class="card category-item mb-4 mb-lg-0">
                     <img src="assets/images/virtus-sedan-volkswagen.png" alt="" class="category-image">
                     <div class="card-body">
@@ -35,7 +35,7 @@
                         <h5 class="card-title text-center">SUV</h5>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
          
         </div>

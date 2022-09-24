@@ -12,7 +12,7 @@ export class ProfileService {
   base_url = environment.api_url + 'contacts';
 
   userInfo = new BehaviorSubject<Contact>({
-    id: 0,
+    contactID: 0,
     birthDate: new Date(),
     correo: '',
     dni: '',
@@ -21,6 +21,7 @@ export class ProfileService {
     phone: '',
     photoURL: '',
     address: {
+      id: 0,
       departmentId: 0,
       townshipId: 0,
       neighborhood: '',
@@ -41,5 +42,4 @@ export class ProfileService {
   setUserInfo(user: Contact){
     this.userInfo.next(user);
   }
-
 }

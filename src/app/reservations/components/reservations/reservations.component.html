@@ -1,0 +1,50 @@
+<div class="container">
+
+    <button type="button" class="btn btn-danger px-5" data-toggle="modal" data-target="#exampleModal">
+        Revision de Auto
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cita de Inspección de Vehículo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="" method="post" role="form">
+                    <div class="modal-body">
+                        <div class="form-row">
+                          <div class="col-lg-4 col-md-6 form-group">
+                              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name">
+                          </div>
+                          <div class="col-lg-4 col-md-6 form-group">
+                              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email">
+                          </div>
+                          <div class="col-lg-4 col-md-6 form-group">
+                              <input type="number" class="form-control" name="phone" id="phone" placeholder="Your Phone">
+                          </div>
+                          <div class="col-lg-4 col-md-6 form-group">
+                              <input type="date" name="date" class="form-control" id="date" placeholder="Date">
+                          </div>
+                          <div class="col-lg-4 col-md-6 form-group">
+                              <input type="time" class="form-control" name="time" id="time" placeholder="Time">
+                          </div>
+                          <div class="col-lg-4 col-md-6 form-group">
+                              <input type="number" class="form-control" name="people" id="people" placeholder="No. of people">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                              <textarea class="form-control" name="message" placeholder="Message"></textarea>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-small btn-transparent" data-bs-dismiss="Modal">Close</button>
+                    <button type="button" class="btn btn-small btn-main">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

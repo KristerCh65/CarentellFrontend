@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white w-100 navigation" id="navbar">
     <div class="container">
       <a class="navbar-brand font-weight-bold" routerLink="/home">
-        <img class="media-object img-fluid mr-3" width="130px" src="assets/images/slogan.jpg" alt="image" />
+        <img class="media-object img-fluid mr-3" width="130px" src="assets/images/slogan.png" alt="image" />
       </a>
   
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar"
@@ -43,7 +43,7 @@
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
               <li><a href="#">Shop</a></li>
               <li><a href="#">Product Details</a></li>
-              <li><a href="#">Checkout</a></li>
+              <li><a routerLink="/reservations">Checkout</a></li>
               <li><a href="#">Cart</a></li>
               <li><a href="#">Confirmation</a></li>
             </ul>
@@ -125,7 +125,7 @@
             </div>
           </div>
         </li>
-        <li class="list-inline-item"><a href="#"><i class="tf-ion-ios-person mr-3"></i>User</a></li>
+        <li style="cursor: pointer" class="list-inline-item" routerLink="/profile/details"><i class="tf-ion-ios-person mr-3"></i>{{authService.isLoggedIn ? loggedUser : "User"}}</li>
       </ul>
     </div>
   </nav>

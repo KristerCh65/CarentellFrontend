@@ -19,6 +19,10 @@ const routes: Routes = [
     loadChildren: () => import("./cars/cars.module").then(m => m.CarsModule)
   },
   {
+    path: 'reservations',
+    loadChildren: () => import("./reservations/reservations.module").then(m => m.ReservationsModule)
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }

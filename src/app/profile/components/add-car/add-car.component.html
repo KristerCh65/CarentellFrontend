@@ -24,64 +24,147 @@
 <section class="user-dashboard page-wrapper">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-7 col-sm-12 col-lg-9">
+            <div class="col-12 col-md-10 col-sm-12 col-lg-12">
                 <div class="tab-pane fade show active" id="settings" role="tabpanel">
                     <div class="acccount-settings">
-                        <h4 class="mb-4">Profile information</h4>
-                        <form>
-                            <div class="form-row">
+                        <h4 class="mb-4">Agregar un vehiculo</h4>
+                        <form [formGroup]="carForm">
+                            <div class="form-row mb-4">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>First Name</label>
-                                        <input type="text" class="form-control" placeholder="John">
+                                        <label>Make</label>
+                                        <!-- <input type="text" class="form-control" placeholder="John"> -->
+                                        <select class="form-control" formControlName="makeId" (change)="getModels()">
+                                            <option *ngFor="let make of makes" [value]="make.makeID">
+                                                {{ make.description }}
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Last Name</label>
-                                        <input type="text" class="form-control" placeholder="Jas">
+                                        <label>Model</label>
+                                        <!-- <input type="text" class="form-control" placeholder="Jas"> -->
+                                        <select class="form-control" formControlName="modelId" placeholder="Select a model...">
+                                            <option></option>
+                                            <option *ngFor="let model of models" [value]="model.modelID">
+                                                {{ model.description }}
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row mb-4">
                                 <div class="col-lg-6">
-                                    <label>DNI</label>
-                                    <input type="text" class="form-control" placeholder="050119995555">
+                                    <div class="form-group">
+                                        <label>Year</label>
+                                        <input type="number" class="form-control" formControlName="year" placeholder="2022">
+                                    </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <label>Phone Number</label>
-                                    <input type="text" class="form-control" placeholder="+504 9999-8888">
+                                    <div class="form-group">
+                                        <label>License Plate</label>
+                                        <input type="text" class="form-control" formControlName="plate" placeholder="HAX5619">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group mb-4">
-                                <label>Email address </label>
-                                <input type="text" class="form-control" placeholder="therichposts@gmail.com">
+                            <div class="form-row mb-4">
+                                <div class="col-lg-6">
+                                    <label>Color</label>
+                                    <input type="text" class="form-control" formControlName="color" placeholder="Rojo">
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>Category</label>
+                                    <select class="form-control" formControlName="categoryId">
+                                        <option *ngFor="let cat of categories" [value]="cat.categoryID">
+                                            {{ cat.description }}
+                                        </option>
+                                    </select>
+                                </div>
                             </div>
 
-                            <h4 class="mb-4 mt-5">Address Info</h4>
+                            <h4 class="mb-4 mt-5">Specs</h4>
 
-                            <ng-container formGroupName="address">
+                            <ng-container>
                                 <div class="form-row mb-4">
                                     <div class="col-lg-6">
-                                        <label>Departmento </label>
-                                        <input type="text" class="form-control" placeholder="Cortes">
+                                        <label>Transmission</label>
+                                        <select class="form-control" formControlName="transmission">
+                                            <option *ngFor="let transmision of eTransmisions | keyvalue" [value]="transmision.value">
+                                                {{ transmision.value }}
+                                            </option>
+                                        </select>
                                     </div>
                                     <div class="col-lg-6">
-                                        <label>Municipio </label>
-                                        <input type="text" class="form-control" placeholder="Cortes">
+                                        <label>Engine</label>
+                                        <input type="text" class="form-control" formControlName="engine">
                                     </div>
                                 </div>
-                                <div class="form-group mb-4">
-                                    <label>Barrio o colonia </label>
-                                    <input type="text" class="form-control" placeholder="">
+                                <div class="form-row mb-4">
+                                    <div class="col-lg-6">
+                                        <label>Fuel </label>
+                                        <input type="text" class="form-control" formControlName="fuel" placeholder="">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>Kilometers</label>
+                                        <input type="text" class="form-control" formControlName="kilometers" placeholder="">
+                                    </div>
                                 </div>
-                                <div class="form-group mb-4">
-                                    <label>Referencias </label>
-                                    <input type="text" class="form-control" placeholder="">
+                                <div class="form-row mb-4">
+                                    <div class="col-lg-6">
+                                        <label>Direction </label>
+                                        <input type="text" class="form-control" formControlName="direction" placeholder="">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>Price</label>
+                                        <input type="text" class="form-control" formControlName="price" placeholder="">
+                                    </div>
                                 </div>
                             </ng-container>
 
-                            <button class="btn btn-dark">Save Changes</button>
+                            <h4 class="mb-4 mt-5">Extras</h4>
+
+                            <ng-container>
+                                <div class="mb-4" >
+                                    <div >
+                                        <div class="form-row">
+                                            <div class="col-lg-6">
+                                                <label>Descripcion</label>
+                                                <div class="row mb-4" formArrayName="extras" *ngFor="let extra of extras.controls; let i = index">
+                                                    <div class="col-md-8" [formGroupName]="i">
+                                                        <input type="text" formControlName="Description" class="form-control" placeholder="">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <button (click)="removeExtra(i)" class="boton btn-danger"><i class="tf-ion-ios-trash-outline"></i></button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <button class="boton btn-black" (click)="addExtra()"><i class="tf-ion-android-add-circle"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label>Fotos</label>
+                                                <div class="row" formArrayName="fotos" *ngFor="let f of fotos.controls; let i = index">
+                                                    <div class="col-md-8" [formGroupName]="i">
+                                                        <input type="file" (change)="onFileChange($event, i)"/>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <button (click)="removeFoto(i)" class="boton btn-danger"><i class="tf-ion-ios-trash-outline"></i></button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <button class="boton btn-black" (click)="addFoto()"><i class="tf-ion-android-add-circle"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+
+                            
+                            <button class="btn btn-dark" (click)="saveCar()">Save Changes</button>
                         </form>
 
                     </div>

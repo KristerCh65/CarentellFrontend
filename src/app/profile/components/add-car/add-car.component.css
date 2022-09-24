@@ -1,0 +1,9 @@
+.boton {
+    font-size: 18px;
+    letter-spacing: .5px;
+    padding: 5px 20px;
+    text-transform: capitalize;
+    font-weight: 600;
+    border-radius: 5px;
+    border: 2px solid transparent;
+}
