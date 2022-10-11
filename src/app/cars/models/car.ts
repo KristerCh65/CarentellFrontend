@@ -37,13 +37,15 @@ export interface Car {
     errorMessage: string;
 }
 
-export interface CarRequest {
+export interface CarList {
     id: number;
     description: string;
     plate: string;
     transmision: Transmisions;
     makeId: number;
+    make: Make;
     modelId: number;
+    model: Model;
     year: number;
     color: string;
     engine: string;
@@ -58,7 +60,8 @@ export interface CarRequest {
     status: number;
     discount: number;
     isSale: boolean;
-    fotos: File[];
+    fotos: Photo[];
     locationId: number;
+    createdDate: Date;
     errorMessage: string;
 }

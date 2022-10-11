@@ -8,6 +8,8 @@ import { ProfileAccountComponent } from './components/profile-account/profile-ac
 import { MainProfileComponent } from './components/main-profile/main-profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddCarComponent } from './components/add-car/add-car.component';
+import { UserCarsComponent } from './components/user-cars/user-cars.component';
+import { SharedModule } from '../core/shared/shared.module';
 
 
 @NgModule({
@@ -16,13 +18,15 @@ import { AddCarComponent } from './components/add-car/add-car.component';
     SideMenuComponent,
     ProfileAccountComponent,
     MainProfileComponent,
-    AddCarComponent
+    AddCarComponent,
+    UserCarsComponent
   ],
   imports: [
     CommonModule,
     ProfileRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class ProfileModule { }

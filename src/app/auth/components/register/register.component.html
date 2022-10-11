@@ -4,25 +4,25 @@
         <div class="col-lg-6">
           <div class="login-form border p-5">
             <div class="text-center heading">
-              <h2 class="mb-2">Sign Up</h2>
-              <p class="lead">Already have an account? <a routerLink="/auth/login"> Login now</a></p>
+              <h2 class="mb-2">Registro</h2>
+              <p class="lead">Ya tienes una cuenta? <a routerLink="/auth/login"> Ingresar Ahora</a></p>
             </div>
             <form [formGroup]="registerForm">
               <div class="form-group mb-4">
-                <label for="#">Enter username</label>
-                <a class="float-right" href="">Forget password?</a>
-                <input type="text" class="form-control" formControlName="userName" placeholder="Enter Password"> 
+                <label for="#">Ingresar Usuario</label>
+                <a class="float-right" href="">Olvidaste tu contraseña?</a>
+                <input type="text" class="form-control" formControlName="userName" placeholder="Ingresar Usuario"> 
               </div>
               <div class="form-group mb-4">
-                <label for="#">Enter Password</label>
-                <input type="password" class="form-control" formControlName="password" placeholder="Enter Password"> 
+                <label for="#">Ingresar Contraseña</label>
+                <input type="password" class="form-control" formControlName="password" placeholder="Ingresar Contraseña"> 
                 <p *ngIf="!passwordMatch;" class="text-danger">Passwords must match</p>
               </div>
               <div class="form-group">
-                <label for="#">Confirm Password</label>
-                <input type="password" class="form-control" formControlName="confirmPassword" placeholder="Confirm Password"> 
+                <label for="#">Confirmar Contraseña</label>
+                <input type="password" class="form-control" formControlName="confirmPassword" placeholder="Confirmar Contraseña"> 
               </div>
-              <button [disabled]="!registerForm.valid" (click)="saveProfile()" class="btn btn-main mt-3 btn-block">Signup</button>
+              <button [disabled]="!registerForm.valid" (click)="saveProfile()" class="btn btn-main mt-3 btn-block">Registrarse</button>
             </form>
           </div>
         </div>

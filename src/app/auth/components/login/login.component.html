@@ -4,20 +4,20 @@
             <div class="col-lg-6">
                 <div class="login-form border p-5">
                     <div class="text-center heading">
-                        <h2 class="mb-2">Login</h2>
-                        <p class="lead">Don’t have an account? <a routerLink="/auth/register">Create a free account</a></p>
+                        <h2 class="mb-2">Iniciar Sesión</h2>
+                        <p class="lead">Aún no tienes cuenta? <a routerLink="/auth/register">Crear cuenta</a></p>
                     </div>
                     <form [formGroup]="form">
                         <div class="form-group mb-4">
-                            <label for="#">Enter username</label>
-                            <input type="text" class="form-control" formControlName="userName" placeholder="Enter Username">
+                            <label for="#">Ingresar Usuario</label>
+                            <input type="text" class="form-control" formControlName="userName" placeholder="ingresar usuario">
                         </div>
                         <div class="form-group">
-                            <label for="#">Enter Password</label>
-                            <a class="float-right" href="">Forget password?</a>
-                            <input type="password" class="form-control" formControlName="password" placeholder="Enter Password">
+                            <label for="#">Ingresar Contraseña</label>
+                            <a class="float-right" href="">Olvidaste tu contraseña?</a>
+                            <input type="password" class="form-control" formControlName="password" placeholder="ingresar contraseña">
                         </div>
-                        <button (click)="login()" class="btn btn-main mt-3 btn-block">Login</button>
+                        <button (click)="login()" class="btn btn-main mt-3 btn-block">Iniciar</button>
                     </form>
                 </div>
             </div>

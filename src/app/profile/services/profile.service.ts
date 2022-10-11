@@ -27,6 +27,8 @@ export class ProfileService {
       neighborhood: '',
       references: ''
     },
+    userId: 0,
+    messageError: '',
     socialMedia: []
   });
 
@@ -41,5 +43,13 @@ export class ProfileService {
 
   setUserInfo(user: Contact){
     this.userInfo.next(user);
+  }
+
+  saveContactInformation(user: Contact){
+    return this.http.post<Contact>(this.base_url, user);
+  }
+
+  updateContactInformation(user: Contact){
+    return this.http.put<Contact>(this.base_url, user);
   }
 }

@@ -27,13 +27,17 @@ export class MainProfileComponent implements OnInit {
   }
 
   loadUserInformation(){
-    this.profileService.getProfileInformationById(this.userId)
-      .subscribe(
-        res => {
-          console.log({res})
-          this.profileService.userInfo.next(res);
-        }
-      )
+    if(this.userId){
+      this.profileService.getProfileInformationById(this.userId)
+        .subscribe(
+          res => {
+            console.log({res})
+            if(res.messageError == null){
+              this.profileService.userInfo.next(res);
+            }
+          }
+        )
+    }
   }
 
 }

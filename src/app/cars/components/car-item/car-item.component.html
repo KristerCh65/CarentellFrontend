@@ -6,7 +6,7 @@
 
     <span *ngIf="car?.isSale" class="onsale">Sale</span>
     <div class="product-hover-overlay">
-        <a href="#"><i class="tf-ion-android-cart"></i></a>
+        <a data-toggle="modal" data-target="#exampleModal"><i class="tf-ion-android-calendar"></i></a>
         <a href="#"><i class="tf-ion-ios-heart"></i></a>
     </div>
 
@@ -24,4 +24,6 @@
             </div>
         </div>
     </div>
+    <app-reservations-modal modalId="exampleModal"></app-reservations-modal>
 </div>
+

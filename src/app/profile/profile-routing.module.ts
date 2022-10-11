@@ -4,6 +4,7 @@ import { AddCarComponent } from './components/add-car/add-car.component';
 import { MainProfileComponent } from './components/main-profile/main-profile.component';
 import { ProfileAccountComponent } from './components/profile-account/profile-account.component';
 import { ProfileDetailsComponent } from './components/profile-details/profile-details.component';
+import { UserCarsComponent } from './components/user-cars/user-cars.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
       {
         path: 'account',
         component: ProfileAccountComponent
+      },
+      {
+        path: 'user-cars',
+        component: UserCarsComponent
       }
     ]
   },

@@ -87,24 +87,28 @@ export class RegisterComponent implements OnInit, OnDestroy {
     console.log(registerUser);
     this.authservice.register(registerUser)
     .pipe(
-      finalize(
-        () => {
-          this.router.navigate(['/profile/details']);
-        }
-      ),
       takeUntil(this.unsubscribeAll)
     )
     .subscribe(
       {
         next: (res: LoginResponse) => {
           this.toastr.success(`Gracias por unirte, ${res.userName}!`, 'Usuario Creado' );
+          this.router.navigate(['/profile/details']);
         },
         error: () => {
           this.toastr.error('No registrado', 'Error al crear usuario');
+          this.formReset();
         }
       }
     )
+  }
 
+  formReset(){
+    this.registerForm.patchValue({
+      userName: '',
+      password: '',
+      confirmPassword: ''
+    })
   }
 
 }

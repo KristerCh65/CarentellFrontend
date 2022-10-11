@@ -14,27 +14,45 @@ export class CarDetailsComponent implements OnInit {
 
   car?: Car;
 
+  cars: Car[] = [];
+
   constructor(
     private route: ActivatedRoute,
     private carsService: CarsService
-  ) { 
+  ) {
     this.carId = this.route.snapshot.paramMap.get("carId");
   }
-  
+
   ngOnInit(): void {
     this.getCarById();
+
   }
 
-  getCarById(){
-    if(this.carId){
+  getCarById() {
+    if (this.carId) {
       this.carsService.getCarById(this.carId)
         .subscribe(
-          res => {
-            console.log("Carro: ", res);
-            this.car = res;
+          car => {
+            console.log("Carro: ", car);
+            this.car = car;
+            this.getCarsByModel();
           }
         )
     }
   }
 
+  getCarsByModel() {
+    if(this.car){
+      this.carsService.getCarsByModel(this.car?.modelId)
+        .subscribe(
+          res => { 
+            this.cars = res;
+          }
+        )
+    }
+  }
+
+
+
 }
+

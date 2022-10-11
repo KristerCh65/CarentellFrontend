@@ -1,0 +1,10 @@
+.indicators{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.indicator-item{
+    height: 100px;
+    width: 100px;
+}

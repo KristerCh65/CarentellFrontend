@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Car, CarRequest } from '../models/car';
+import { Car, CarList } from '../models/car';
 import { Category } from '../models/category';
 
 @Injectable({
@@ -28,6 +28,18 @@ export class CarsService {
 
   saveCar(car: FormData){
     return this.http.post(this.api_url + '/create-car', car);
+  }
+
+  getCarsByMake(makeID: any): Observable<Car[]>{
+    return this.http.get<Car[]>(this.api_url + "/get-cars-by-make/" + makeID);
+  }
+
+  getCarsByUser(userId: any): Observable<CarList[]>{
+    return this.http.get<CarList[]>(this.api_url + "/get-cars-by-user/" + userId);
+  }
+
+  getCarsByModel(modelId: any): Observable<Car[]>{
+    return this.http.get<Car[]>(this.api_url + "/get-cars-by-model/" + modelId)
   }
   
 }

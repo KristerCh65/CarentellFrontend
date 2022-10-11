@@ -11,5 +11,7 @@ export interface Contact{
     phone: string;
     photoURL: string;
     address: Address;
+    userId: number;
+    messageError: string;
     socialMedia: SocialMedia[];
 }

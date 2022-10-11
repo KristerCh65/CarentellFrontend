@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginGuard } from './core/guards/login.guard';
 
 const routes: Routes = [
   {
@@ -8,19 +9,28 @@ const routes: Routes = [
   },
   {
     path: 'auth',
+    canActivate: [LoginGuard],
     loadChildren: () => import("./auth/auth.module").then(m => m.AuthModule)
-  },
-  {
-    path: 'profile',
-    loadChildren: () => import("./profile/profile.module").then(m => m.ProfileModule)
   },
   {
     path: 'cars',
     loadChildren: () => import("./cars/cars.module").then(m => m.CarsModule)
   },
   {
+    path: 'dashboard',
+    loadChildren: () => import("./dashboard/dashboard.module").then(m => m.DashboardModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import("./profile/profile.module").then(m => m.ProfileModule)
+  },
+  {
     path: 'reservations',
     loadChildren: () => import("./reservations/reservations.module").then(m => m.ReservationsModule)
+  },
+  {
+    path: 'subscriptions',
+    loadChildren: () => import("./subscriptions/subscriptions.module").then(m => m.SubscriptionsModule)
   },
   {
     path: '**',
