@@ -15,38 +15,35 @@
           <a class="nav-link" routerLink="/home">Inicio </a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="#">Sobre Nosotros</a>
-        </li>
         <!-- Pages -->
         <li class="nav-item dropdown dropdown-slide">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-delay="350"
+          <a class="nav-link dropdown-toggle" routerLink="/cars/rent-cars-list" id="navbarDropdown4" role="button" data-delay="350"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Tipos
+            Alquiler de Vehículos
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown4">
+          <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown4">
             <li><a href="#">About Us</a></li>
             <li><a href="#">Blog</a></li>
             <li><a href="#">Blog Single</a></li>
             <li><a href="#">Contact</a></li>
             <li><a href="#">404 Page</a></li>
             <li><a href="#">FAQ</a></li>
-          </ul>
+          </ul> -->
         </li><!-- /Pages -->
         <!-- / Blog -->
 
         <li class="nav-item dropdown dropdown-slide">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-delay="350"
+          <a class="nav-link dropdown-toggle"  routerLink="/cars/cars-list" id="navbarDropdown3" role="button" data-delay="350"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Tienda
+            Venta de Vehículos
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+          <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
             <li><a href="#">Shop</a></li>
             <li><a href="#">Product Details</a></li>
             <li><a routerLink="/reservations">Checkout</a></li>
             <li><a href="#">Cart</a></li>
             <li><a href="#">Confirmation</a></li>
-          </ul>
+          </ul> -->
         </li><!-- / Blog -->
 
         <li class="nav-item">
@@ -59,13 +56,20 @@
 
     <ul class="top-menu list-inline mb-0 d-none d-lg-block" id="top-menu">
       <li class="list-inline-item">
-        <form>
-          <input class="form-control mr-sm-2" [formControl]="searchForm" type="search" placeholder="Search" aria-label="Search">
+        <form class="form-inline form-group">
+          <div class="input-group">
+            <input class="form-control" [formControl]="searchForm" type="search" placeholder="Buscar por marca, modelo, año" aria-label="Search">
+            <div class="input-group-append">
+              <button (click)="performSearch()" class="boton btn-danger" id="search-icon"><i class="tf-ion-android-search"></i></button>
+            </div>
+          </div>
         </form>
+       
       </li>
-      <li class="list-inline-item">
-        <a href="javascript:void(0)" (click)="performSearch()" class="search_toggle" id="search-icon"><i class="tf-ion-android-search"></i></a>
-      </li>
+      <!-- <li class="list-inline-item">
+      </li> -->
+
+      
 
       <!-- <li class="dropdown cart-nav dropdown-slide list-inline-item">
           <a href="#" class="dropdown-toggle cart-icon" data-toggle="dropdown" data-hover="dropdown">
@@ -137,6 +141,7 @@
             <li><a routerLink="/profile/add-car">Agregar un vehiculo</a></li>
             <li><a routerLink="/profile/user-cars">Publicaciones</a></li>
             <li><a routerLink="/profile/details">Perfil del Usuario</a></li>
+            <li><a routerLink="/reservations/calendar">Citas o Reservas</a></li>
             <li><a href="#" (click)="logout()">Logout</a></li>
           </ul>
         </ng-container>

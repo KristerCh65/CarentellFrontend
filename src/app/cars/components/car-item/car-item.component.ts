@@ -24,7 +24,7 @@ export class CarItemComponent implements OnInit {
   }
 
   viewDetails(id?: number){
-    this.router.navigate(["/cars/car-details/" + id]);
+    this.router.navigate(["/cars/car-details", id]);
   }
 
   

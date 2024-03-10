@@ -1456,6 +1456,10 @@ a.text-primary:hover {
   margin-top: -4px;
 }
 
+.visually-hidden{
+  display: none !important;
+}
+
 .slider-selection {
   background: #e60012;
   box-shadow: none;

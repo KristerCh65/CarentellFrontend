@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { ReservationsModalComponent } from './components/reservations-modal/reservations-modal.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CarsFilterPipe } from '../pipes/cars-filter.pipe';
+import { NgbDatepickerModule, NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -14,19 +16,23 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     ReservationsModalComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    CarsFilterPipe
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbDatepickerModule,
+    NgbTimepickerModule
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     ReservationsModalComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    CarsFilterPipe
   ]
 })
 export class SharedModule { }

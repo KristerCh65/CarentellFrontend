@@ -1,22 +1,24 @@
+<input class="form-control" id="myInput" type="text" name="carsfilter" placeholder="Buscar.." [(ngModel)]="carsfilter">
+  <br>
 <table class="table table-bordered">
     <thead>
         <tr>
             <th scope="col">N°</th>
-            <th scope="col">Fecha de creacion</th>
+            <th scope="col">Fecha de Creación</th>
             <th scope="col">Vehiculo</th>
-            <th scope="col">Status</th>
+            <th scope="col">Estatus</th>
             <th scope="col">Precio</th>
-            <th scope="col">Actions</th>
+            <th scope="col">Acciones</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let car of cars; let i = index">
+        <tr *ngFor="let car of cars | carsFilter: carsfilter ; let i = index">
             <th scope="row">#{{ i + 1}}</th>
             <td>{{car.createdDate | date: 'longDate'}} </td>
             <td>{{car.make.description}} {{car.model.description}} {{car.year}}</td>
             <td>{{car.status}}</td>
             <td>{{car.price | currency: 'L'}}</td>
-            <td><a routerLink="/order" class="btn btn-dark btn-small">Ver detalles</a></td>
+            <td><a routerLink="/cars/car-details/{{car.id}}" class="btn btn-dark btn-small">Ver detalles</a></td>
         </tr> 
     </tbody>
 </table>

@@ -32,6 +32,7 @@ export interface Car {
     discount: number;
     isSale: boolean;
     fotos: FileList;
+    createdDate: Date;
     locationId: number;
     location: LocationDTO;
     errorMessage: string;

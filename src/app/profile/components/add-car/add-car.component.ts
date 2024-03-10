@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { Category } from 'src/app/cars/models/category';
+import { Directions } from 'src/app/cars/models/directions.enum';
+import { Fuels } from 'src/app/cars/models/fuels.enum';
 import { Make } from 'src/app/cars/models/make';
 import { Model } from 'src/app/cars/models/model';
 import { Transmisions } from 'src/app/cars/models/transmisions.enum';
@@ -12,6 +14,7 @@ import { CategoriesService } from 'src/app/cars/services/categories.service';
 import { MakesService } from 'src/app/cars/services/makes.service';
 import { ModelsService } from 'src/app/cars/services/models.service';
 import { ProfileService } from 'src/app/profile/services/profile.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-car',
@@ -25,6 +28,9 @@ export class AddCarComponent implements OnInit {
   categories: Category[] = [];
 
   eTransmisions = Transmisions;
+
+  eDirections = Directions;
+  eFuels = Fuels;
 
   carForm: FormGroup;
   user: number = 0;
@@ -41,12 +47,41 @@ export class AddCarComponent implements OnInit {
     private router: Router
   ) { 
     this.carForm = this.buildForm();
+    this.validateSubscription();
   }
 
   ngOnInit(): void {
     this.getMakes();
     this.getCategories();
     this.getLoggedUser();
+  }
+
+  validateSubscription(){
+    this.profileService.userCurrentSubscription$
+      .subscribe({
+        next: (res) => {
+          if(res.messageError != null){
+            Swal.fire({
+              title: 'No tienes una suscripcion activa',
+              text: 'Para poder ingresar un nuevo vehiculo, debes suscribirte, ¿Deseas adquirir una nueva suscripcion?',
+              showDenyButton: true,
+              //showCancelButton: true,
+              confirmButtonText: 'Adquirir',
+              denyButtonText: `Volver`,
+              allowOutsideClick: false
+            }).then((result) => {
+              /* Read more about isConfirmed, isDenied below */
+              if (result.isConfirmed) {
+                //Swal.fire('Saved!', '', 'success')
+                this.router.navigate(['/subscriptions/pricing']);
+              } else if (result.isDenied) {
+                //Swal.fire('Changes are not saved', '', 'info')
+                this.router.navigate(['/profile/details']);
+              }
+            })
+          }
+        }
+      })
   }
 
   buildForm(){
@@ -154,6 +189,7 @@ export class AddCarComponent implements OnInit {
   getLoggedUser(){
     this.authService.loggedUser$
       .subscribe(loggedUser => {
+        console.log("Getting logged user: ", loggedUser)
         this.getContactId(loggedUser.id);
       })
   }
@@ -163,7 +199,7 @@ export class AddCarComponent implements OnInit {
       .subscribe(contac => {
         console.log({contac})
         this.user = contac.contactID;
-        this.carForm.get('locationId')?.setValue(contac.address.id);
+        this.carForm.get('locationId')?.setValue(contac.address.addressID);
       })
   }
 

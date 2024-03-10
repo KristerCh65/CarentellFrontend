@@ -4,25 +4,48 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Cita de Inspección de Vehículo</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <form action="" method="post" role="form">
+            <form [formGroup]="citaForm">
                 <div class="modal-body">
+                    <div formGroupName="userForm" class="form-row">
+                        <div class="col-lg-4 col-md-6 form-group">
+                            <input type="text" name="name" formControlName="name" class="form-control" id="name" placeholder="Your Name">
+                        </div>
+                        <div class="col-lg-4 col-md-6 form-group">
+                            <input type="email" class="form-control" formControlName="correo" name="email" id="email" placeholder="Your Email">
+                        </div>
+                        <div class="col-lg-4 col-md-6 form-group">
+                            <input type="number" class="form-control" formControlName="phone" name="phone" id="phone" placeholder="Your Phone">
+                        </div>
+                    </div>
                     <div class="form-row">
                         <div class="col-lg-4 col-md-6 form-group">
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name">
+                            <div class="input-group">
+                                <input 
+                                    ngbDatepicker
+                                    [footerTemplate]="footerTemplate"
+                                    class="form-control"
+                                    placeholder="yyyy-mm-dd"
+                                    #d="ngbDatepicker"
+                                    formControlName="date"
+                                />
+                                <div class="input-group-append">
+                                    <button class="fa" (click)="d.toggle()"><i class="fa fa-calendar"></i></button>
+                                </div>
+                            </div>
+                            <ng-template #footerTemplate>
+                                <hr class="my-0" />
+                                <button class="btn btn-primary btn-sm m-2 float-left" (click)="citaForm.get('date')?.setValue(today); d.close()">Today</button>
+                                <button class="btn btn-secondary btn-sm m-2 float-right" (click)="d.close()">Close</button>
+                            </ng-template>
+                            <!-- <input type="date" formControlName="date" name="date" class="form-control" id="date" placeholder="Date"> -->
                         </div>
                         <div class="col-lg-4 col-md-6 form-group">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email">
-                        </div>
-                        <div class="col-lg-4 col-md-6 form-group">
-                            <input type="number" class="form-control" name="phone" id="phone" placeholder="Your Phone">
-                        </div>
-                        <div class="col-lg-4 col-md-6 form-group">
-                            <input type="date" name="date" class="form-control" id="date" placeholder="Date">
-                        </div>
-                        <div class="col-lg-4 col-md-6 form-group">
-                            <input type="time" class="form-control" name="time" id="time" placeholder="Time">
+                            <ngb-timepicker [minuteStep]=30 formControlName="time"></ngb-timepicker>
+                            <!-- <input type="time" formControlName="time" step="1800" class="form-control" name="time" id="time" placeholder="Time"> -->
                         </div>
                         <div class="col-lg-4 col-md-6 form-group">
                             <input type="number" class="form-control" name="people" id="people"
@@ -30,13 +53,13 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" name="message" placeholder="Message"></textarea>
+                        <textarea class="form-control" formControlName="comments" name="message" placeholder="Message"></textarea>
                     </div>
                 </div>
             </form>
             <div class="modal-footer">
-                <button type="button" class="btn btn-small btn-transparent" data-bs-dismiss="Modal">Close</button>
-                <button type="button" class="btn btn-small btn-main">Save changes</button>
+                <button type="button" class="btn footer-btn btn-small btn-transparent" #myModalClose data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn footer-btn btn-small btn-main" (click)="crearCita()">Crear Cita</button>
             </div>
         </div>
     </div>

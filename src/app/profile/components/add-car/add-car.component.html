@@ -28,12 +28,12 @@
                 <div class="tab-pane fade show active" id="settings" role="tabpanel">
                     <div class="acccount-settings">
                         <button class="boton btn-black mb-4" routerLink="/profile/details"><i class="tf-ion-android-arrow-back"></i></button>
-                        <h4 class="mb-4">Agregar un vehiculo</h4>
+                        <h4 class="mb-4">Agregar un Vehículo</h4>
                         <form [formGroup]="carForm">
                             <div class="form-row mb-4">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Make</label>
+                                        <label>Marca</label>
                                         <!-- <input type="text" class="form-control" placeholder="John"> -->
                                         <select class="form-control" formControlName="makeId" (change)="getModels()">
                                             <option *ngFor="let make of makes" [value]="make.makeID">
@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Model</label>
+                                        <label>Modelo</label>
                                         <!-- <input type="text" class="form-control" placeholder="Jas"> -->
                                         <select class="form-control" formControlName="modelId" placeholder="Select a model...">
                                             <option></option>
@@ -58,38 +58,45 @@
                             <div class="form-row mb-4">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Year</label>
+                                        <label>Año</label>
                                         <input type="number" class="form-control" formControlName="year" placeholder="2022">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>License Plate</label>
+                                        <label>Placa</label>
                                         <input type="text" class="form-control" formControlName="plate" placeholder="HAX5619">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row mb-4">
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     <label>Color</label>
                                     <input type="text" class="form-control" formControlName="color" placeholder="Rojo">
                                 </div>
-                                <div class="col-lg-6">
-                                    <label>Category</label>
+                                <div class="col-lg-4">
+                                    <label>Categoría</label>
                                     <select class="form-control" formControlName="categoryId">
                                         <option *ngFor="let cat of categories" [value]="cat.categoryID">
                                             {{ cat.description }}
                                         </option>
                                     </select>
                                 </div>
+                                <div class="col-lg-4 justify-content-center">
+                                    <label>Tipo Publicación:</label>
+                                    <br>
+                                    <div class="ml-4">
+                                        <input type="checkbox" name="isSale" formControlName="isSale"> Es Venta?
+                                    </div>
+                                </div>
                             </div>
 
-                            <h4 class="mb-4 mt-5">Specs</h4>
+                            <h4 class="mb-4 mt-5">Especificaciones</h4>
 
                             <ng-container>
                                 <div class="form-row mb-4">
                                     <div class="col-lg-6">
-                                        <label>Transmission</label>
+                                        <label>Transmision</label>
                                         <select class="form-control" formControlName="transmission">
                                             <option *ngFor="let transmision of eTransmisions | keyvalue" [value]="transmision.value">
                                                 {{ transmision.value }}
@@ -97,27 +104,35 @@
                                         </select>
                                     </div>
                                     <div class="col-lg-6">
-                                        <label>Engine</label>
+                                        <label>Motor</label>
                                         <input type="text" class="form-control" formControlName="engine">
                                     </div>
                                 </div>
                                 <div class="form-row mb-4">
                                     <div class="col-lg-6">
-                                        <label>Fuel </label>
-                                        <input type="text" class="form-control" formControlName="fuel" placeholder="">
+                                        <label>Combustible </label>
+                                        <select class="form-control" formControlName="fuel">
+                                            <option *ngFor="let fuel of eFuels | keyvalue" [value]="fuel.value">
+                                                {{ fuel.value }}
+                                            </option>
+                                        </select>
                                     </div>
                                     <div class="col-lg-6">
-                                        <label>Kilometers</label>
+                                        <label>Kilómetros</label>
                                         <input type="text" class="form-control" formControlName="kilometers" placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-row mb-4">
                                     <div class="col-lg-6">
-                                        <label>Direction </label>
-                                        <input type="text" class="form-control" formControlName="direction" placeholder="">
+                                        <label>Tipo de Dirección </label>
+                                        <select class="form-control" formControlName="direction">
+                                            <option *ngFor="let direction of eDirections | keyvalue" [value]="direction.value">
+                                                {{ direction.value }}
+                                            </option>
+                                        </select>
                                     </div>
                                     <div class="col-lg-6">
-                                        <label>Price</label>
+                                        <label>{{ carForm.controls.isSale.value ? "Precio" : "Precio por dia" }}</label>
                                         <input type="text" class="form-control" formControlName="price" placeholder="">
                                     </div>
                                 </div>
@@ -130,7 +145,7 @@
                                     <div >
                                         <div class="form-row">
                                             <div class="col-lg-6">
-                                                <label>Descripcion</label>
+                                                <label>Descripción</label>
                                                 <div class="row mb-4" formArrayName="extras" *ngFor="let extra of extras.controls; let i = index">
                                                     <div class="col-md-8" [formGroupName]="i">
                                                         <input type="text" formControlName="Description" class="form-control" placeholder="">
@@ -165,7 +180,7 @@
                             </ng-container>
 
                             
-                            <button class="btn btn-dark" (click)="saveCar()">Save Changes</button>
+                            <button class="btn btn-dark" (click)="saveCar()">Guardar</button>
                         </form>
 
                     </div>

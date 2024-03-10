@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../../models/category';
+import { CarsService } from '../../services/cars.service';
+import { CategoriesFiltersService } from '../../services/categories-filters-service.service';
 import { CategoriesService } from '../../services/categories.service';
 
 @Component({
@@ -12,7 +14,8 @@ export class CategoriesFiltersComponent implements OnInit {
   categories: Category[] = []
 
   constructor(
-    private categoriesService: CategoriesService
+    private categoriesService: CategoriesService,
+    private categoriesFilterService: CategoriesFiltersService
   ) { }
 
   ngOnInit(): void {
@@ -30,6 +33,7 @@ export class CategoriesFiltersComponent implements OnInit {
 
   onInputChange(event: any){
     console.log(event.target.value);
+    this.categoriesFilterService.setFilterCategory(event.target.value);
   }
 
 }

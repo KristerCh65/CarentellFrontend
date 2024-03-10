@@ -1,7 +1,9 @@
 export interface Address{
-    id: number;
+    addressID: number;
     departmentId: number;
+    department?: Department;
     townshipId: number;
+    township?: Township;
     neighborhood: string;
     references: string;
 }
@@ -12,7 +14,7 @@ export interface Department{
 }
 
 export interface Township{
-    townshipID: number;
+    townshipId: number;
     townCode: number;
     name: string;
     departmentId: number;

@@ -8,14 +8,14 @@
           [(viewDate)]="viewDate"
           (viewDateChange)="closeOpenMonthViewDay()"
         >
-          Previous
+          Anterior
         </div>
         <div
           class="btn btn-outline-secondary"
           mwlCalendarToday
           [(viewDate)]="viewDate"
         >
-          Today
+          Hoy
         </div>
         <div
           class="btn btn-primary"
@@ -24,7 +24,7 @@
           [(viewDate)]="viewDate"
           (viewDateChange)="closeOpenMonthViewDay()"
         >
-          Next
+          Siguiente
         </div>
       </div>
     </div>
@@ -38,21 +38,21 @@
           (click)="setView(CalendarView.Month)"
           [class.active]="view === CalendarView.Month"
         >
-          Month
+          Mensual
         </div>
         <div
           class="btn btn-primary"
           (click)="setView(CalendarView.Week)"
           [class.active]="view === CalendarView.Week"
         >
-          Week
+          Semanal
         </div>
         <div
           class="btn btn-primary"
           (click)="setView(CalendarView.Day)"
           [class.active]="view === CalendarView.Day"
         >
-          Day
+          Diario
         </div>
       </div>
     </div>
@@ -92,12 +92,12 @@
   
   <!-- Everything you see below is just for the demo, you don't need to include it in your app -->
   
-  <br /><br /><br />
+  <!--  <br /><br /><br />
   
   <h3>
-    Edit events
+    Editar Eventos
     <button class="btn btn-primary float-end" (click)="addEvent()">
-      Add new
+      Agregar Nuevo
     </button>
     <div class="clearfix"></div>
   </h3>
@@ -106,12 +106,12 @@
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th>Title</th>
-          <th>Primary color</th>
-          <th>Secondary + text color</th>
-          <th>Starts at</th>
-          <th>Ends at</th>
-          <th>Remove</th>
+          <th>Titulo</th>
+          <th>Color</th>
+          <th>Color de TExto</th>
+          <th>Fecha Inicio</th>
+          <th>Fecha Terminación</th>
+          <th>Eliminar</th>
         </tr>
       </thead>
   
@@ -129,22 +129,22 @@
             <input
               type="color"
               (change)="refresh.next()"
-              />
+              /> -->
               <!-- [(ngModel)]="event.color.primary" -->
-          </td>
+  <!--        </td>
           <td>
             <input
               type="color"
               (change)="refresh.next()"
-              />
+              /> -->
               <!-- [(ngModel)]="event.color.secondary" -->
-            <input
+   <!--           <input
               type="color"
               (change)="refresh.next()"
-              />
+              /> -->
               <!-- [ngModel]="event.color.secondaryText ?? '#1e90ff'"
               (ngModelChange)="event.color.secondaryText = $event" -->
-          </td>
+ <!--         </td>
           <td>
             <input
               class="form-control"
@@ -177,28 +177,28 @@
           </td>
           <td>
             <button class="btn btn-danger" (click)="deleteEvent(event)">
-              Delete
+              Eliminar
             </button>
           </td>
         </tr>
       </tbody>
     </table>
-  </div>
+  </div> -->
   
-  <ng-template #modalContent let-close="close">
+  <!-- <ng-template #modalContent let-close="close">
     <div class="modal-header">
-      <h5 class="modal-title">Event action occurred</h5>
+      <h5 class="modal-title">Acción de Evento</h5>
       <button type="button" class="close" (click)="close()">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
       <div>
-        Action:
+        Acción:
         <pre>{{ modalData?.action }}</pre>
       </div>
       <div>
-        Event:
+        Evento:
         <pre>{{ modalData?.event | json }}</pre>
       </div>
     </div>
@@ -207,5 +207,5 @@
         OK
       </button>
     </div>
-  </ng-template>
+  </ng-template> -->
   

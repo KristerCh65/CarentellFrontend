@@ -14,6 +14,7 @@ export class UserCarsComponent implements OnInit {
   loggedUserId: number = 0;
 
   cars: CarList[] = [];
+  carsfilter: string = "";
 
   constructor(
     private carsService: CarsService,

@@ -3,6 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from '../../models/car';
 import { CarsService } from '../../services/cars.service';
+import { CategoriesFiltersService } from '../../services/categories-filters-service.service';
 
 @Component({
   selector: 'app-cars',
@@ -18,7 +19,8 @@ export class CarsComponent implements OnInit {
   constructor(
     private carsService: CarsService,
     private sanitizer: DomSanitizer,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private categoriesFiltersService: CategoriesFiltersService
   ) { 
     this.categoryId = this.route.snapshot.paramMap.get('categoryId');
   }
@@ -27,9 +29,9 @@ export class CarsComponent implements OnInit {
     this.getCars();
   }
 
-  getCarsByCategory(){
+  getCarsByCategory(categoryId: number){
     if(this.categoryId){
-      this.carsService.getCarsByCategory(this.categoryId)
+      this.carsService.getCarsByCategory(categoryId)
         .subscribe(
           res => {
             console.log("Cars by category")
@@ -37,6 +39,15 @@ export class CarsComponent implements OnInit {
           }
         )
     }
+  }
+
+  getByCategory(){
+    this.categoriesFiltersService.categoriesFilter$
+      .subscribe(
+        filters => {
+          this.getCarsByCategory(filters);
+        }
+      )
   }
 
   getCarsWithoutFilter(){
@@ -52,15 +63,14 @@ export class CarsComponent implements OnInit {
 
   getCars(){
     if(this.categoryId){
-      this.getCarsByCategory();
+      this.getCarsByCategory(parseInt(this.categoryId));
+      this.getByCategory();
     } else {
       this.getCarsWithoutFilter();
     }
   }
 
-  sanitizeUrl(url: string){
-    return this.sanitizer.bypassSecurityTrustUrl(url);
-  }
+
 
 
 }

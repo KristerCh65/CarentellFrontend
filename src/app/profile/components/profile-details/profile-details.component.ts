@@ -61,6 +61,7 @@ export class ProfileDetailsComponent implements OnInit, OnDestroy {
     this.getUserInformation();
     this.getLoggedUser();
     this.getDepartments();
+    
   }
 
   get direccion() {
@@ -80,6 +81,7 @@ export class ProfileDetailsComponent implements OnInit, OnDestroy {
     subscribe(
       res => {
         this.departments = res;
+        this.getTownshipsByDepto();
       }
     )
   }
@@ -88,6 +90,7 @@ export class ProfileDetailsComponent implements OnInit, OnDestroy {
     this.townshipService.getTownshipsByDepartment(parseInt(this.direccion.controls.departmentID.value))
     .subscribe(
       res => { 
+        console.log('Municipio: ' , res)
         this.townships = res;
       }
     )

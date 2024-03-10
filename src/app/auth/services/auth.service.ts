@@ -7,6 +7,7 @@ import { AuthRequest } from '../models/auth-request';
 import { RegisterRequest } from '../models/register-request';
 import { AuthUser } from '../models/auth-user';
 import { LoginResponse } from '../models/login-response';
+import jwtDecode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,9 @@ export class AuthService {
     private http: HttpClient,
     private router: Router
   ) { 
-
+    if(localStorage.getItem('token')){
+      this.setLoggedUser();
+    }
   }
 
   register(user: RegisterRequest){
@@ -49,6 +52,17 @@ export class AuthService {
     localStorage.removeItem('token');
     this.resetLoggedUser();
     this.router.navigate(['/home'])
+  }
+
+  setLoggedUser(){
+    const token = localStorage.getItem('token');
+    const user: any = jwtDecode(token ?? '');
+    const luser: AuthUser = {
+      username: user.unique_name ?? '',
+      id: user.nameid ?? 0,
+      active: true
+    }
+    this.loggedUser.next(luser);
   }
 
   resetLoggedUser(){

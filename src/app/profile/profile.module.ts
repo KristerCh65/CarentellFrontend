@@ -10,6 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddCarComponent } from './components/add-car/add-car.component';
 import { UserCarsComponent } from './components/user-cars/user-cars.component';
 import { SharedModule } from '../core/shared/shared.module';
+import { CoreModule } from '../core/core.module';
+import { ExpiredSubscriptionComponent } from './components/expired-subscription/expired-subscription.component';
 
 
 @NgModule({
@@ -19,7 +21,8 @@ import { SharedModule } from '../core/shared/shared.module';
     ProfileAccountComponent,
     MainProfileComponent,
     AddCarComponent,
-    UserCarsComponent
+    UserCarsComponent,
+    ExpiredSubscriptionComponent
   ],
   imports: [
     CommonModule,

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Subscription } from 'src/app/subscriptions/models/subscription';
 import { environment } from 'src/environments/environment';
 import { Contact } from '../models/contact';
 
@@ -21,7 +22,7 @@ export class ProfileService {
     phone: '',
     photoURL: '',
     address: {
-      id: 0,
+      addressID: 0,
       departmentId: 0,
       townshipId: 0,
       neighborhood: '',
@@ -34,11 +35,39 @@ export class ProfileService {
 
   userInfo$ = this.userInfo.asObservable();
 
+  userCurrentSubscription = new BehaviorSubject<Subscription>({
+    id: 0,
+    typeSubscriptionId: 0,
+    typeSubscription: {
+      typeSubscryptionID: 0,
+      description: '',
+      quantityDays: 0,
+      priority: 0,
+      price: 0,
+      comentaries: ''
+    },
+    userId: 0,
+    user: {
+      id: 0,
+      username: '',
+      active: false
+    },
+    activationDate: new Date(),
+    terminationDate: new Date(),
+    active: false,
+    messageError: ''
+  });
+
+  userCurrentSubscription$ = this.userCurrentSubscription.asObservable();
 
   constructor(private http: HttpClient) { }
 
-  getProfileInformationById(userId: number) : Observable<Contact>{
+  getProfileInformationById(userId: any) : Observable<Contact>{
     return this.http.get<Contact>(this.base_url +"/get-by-user-id/"+ userId);
+  }
+
+  getContactById(contactId: any): Observable<Contact>{
+    return this.http.get<Contact>(this.base_url + "/get-contact-by-id/" + contactId);
   }
 
   setUserInfo(user: Contact){

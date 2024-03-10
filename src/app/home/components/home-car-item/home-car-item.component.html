@@ -6,7 +6,7 @@
 
     <span *ngIf="car?.isSale" class="onsale">Sale</span>
     <div class="product-hover-overlay">
-        <a href="#"><i class="tf-ion-android-cart"></i></a>
+        <a href="#"><i class="tf-ion-android-calendar"></i></a>
         <a href="#"><i class="tf-ion-ios-heart"></i></a>
     </div>
 
@@ -19,7 +19,8 @@
                     <li class="list-inline-item product-feature-item"><i class="tf-ion-android-checkmark-circle"></i>Modelo</li> -->
                     <li class="list-inline-item product-feature-item"><i class="tf-ion-ios-timer-outline"></i>{{ car?.kilometers}}</li>
                     <li class="list-inline-item product-feature-item"><i class="tf-ion-android-calendar"></i>{{ car?.year}}</li>
-                    <li class="list-inline-item product-feature-item"><i class="tf-ion-cash"></i>L. {{ car?.price}}</li>
+                    <li *ngIf="car?.isSale" class="list-inline-item product-feature-item"><i class="tf-ion-cash"></i>L. {{ car?.price}}</li>
+                    <li *ngIf="!car?.isSale" class="list-inline-item product-feature-item"><i class="tf-ion-cash"></i>L. {{ car?.price}} por dia</li>
                 </ul>
             </div>
         </div>

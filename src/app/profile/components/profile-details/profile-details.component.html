@@ -36,7 +36,7 @@
             </div>
             <div class="form-group mb-4">
                 <label>Correo Electronico </label>
-                <input type="text" class="form-control" formControlName="correo" placeholder="correo@gmail.com">
+                <input type="text" class="form-control" formControlName="correo" placeholder="correo@email.com">
             </div>
 
             <h4 class="mb-4 mt-5">Información de Contacto</h4>
@@ -57,7 +57,7 @@
                         <label>Municipio </label>
                         <select class="form-control" formControlName="townshipId" placeholder="Seleccionar Municipio...">
                             <option></option>
-                            <option *ngFor="let towns of townships" [value]="towns.townshipID">
+                            <option *ngFor="let towns of townships" [value]="towns.townshipId">
                                 {{ towns.name }}
                             </option>
                         </select>
@@ -74,7 +74,7 @@
                 </div>
             </ng-container>
 
-            <button (click)="saveContact()" class="btn btn-dark">Save Changes</button>
+            <button (click)="saveContact()" class="btn btn-dark">Guardar</button>
         </form>
 
     </div>

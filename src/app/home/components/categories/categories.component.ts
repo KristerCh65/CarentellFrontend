@@ -35,7 +35,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   showCarsList(id: number){
-    this.router.navigate(["/cars/" + id]);
+    this.router.navigate(["/cars/cars-list/" + id]);
   }
 
 

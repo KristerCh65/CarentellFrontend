@@ -31,12 +31,12 @@
                 <div class="single-product-details mt-5 mt-lg-0">
                     <h2>{{car?.make?.description}} {{ car?.model?.description }} {{ car?.year }}</h2>
                     <div class="sku_wrapper mb-4">
-                        Placa: <span class="text-muted">{{ car?.plate }} </span>
+                        Publicado: <span class="text-muted">{{car?.createdDate | date: 'longDate'}} </span>
                     </div>
 
                     <hr>
 
-                    <h3 class="product-price">L{{ car?.price }} <del *ngIf="car?.discount">$119.90</del></h3>
+                    <h3 class="product-price">{{ car?.price | currency: 'L'}} {{car?.isSale ? "" : "por dia"}} <del *ngIf="car?.discount">$119.90</del></h3>
 
                     <p class="product-description my-4 ">
                         {{ car?.description }}
@@ -46,8 +46,9 @@
                         <div class="quantity d-flex align-items-center">
                             <input type="number" id="#" class="input-text qty text form-control w-25 mr-3" step="1"
                                 min="1" max="9" name="quantity" value="1" title="Qty" size="4">
-                            <a href="#" class="btn btn-main btn-small" data-toggle="modal" data-target="#exampleModal">Gestionar cita</a>
+                            <button href="#" class="btn btn-main btn-small" [disabled]="!authService.isLoggedIn()" data-toggle="modal" data-target="#exampleModal">Gestionar cita</button>
                         </div>
+                        <small *ngIf="!authService.isLoggedIn()" class="text-muted">Para gestionar una cita debe iniciar sesión</small>
                     </form>
 
 
@@ -66,23 +67,6 @@
                             <span class="font-weight-bold text-capitalize product-meta-title">Categoría :</span>
                             <span class="text-capitalize">{{ car?.category?.description }}</span>
                         </div>
-
-                        <div class="product-share mt-4">
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <a href="#"><i class="tf-ion-social-facebook"></i></a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#"><i class="tf-ion-social-twitter"></i></a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#"><i class="tf-ion-social-linkedin"></i></a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#"><i class="tf-ion-social-pinterest"></i></a>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -98,16 +82,13 @@
                         <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
                             role="tab" aria-controls="nav-profile" aria-selected="false">Información Adicional:</a>
                         <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
-                            role="tab" aria-controls="nav-contact" aria-selected="false">Reseñas:</a>
+                            role="tab" aria-controls="nav-contact" aria-selected="false">Contacto:</a>
                     </div>
                 </nav>
 
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                            Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu
-                            libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend
-                            leo.</p>
+                        <span class="font-weight-bold text-capitalize product-meta-title"><p>{{ car?.description }}</p></span>
 
                         <h4>Características:</h4>
 
@@ -135,54 +116,48 @@
                                 <strong>Dirección: </strong>
                                 <span>{{ car?.direction }}</span>
                             </li>
-                            <li class="d-flex">
-                                <strong>Size</strong>
-                                <span>L, M, S, XL, XXL</span>
-                            </li>
                         </ul>
                     </div>
+
                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                         <div class="row">
                             <div class="col-lg-7">
                                 <div class="media review-block mb-4">
                                     <img src="assets/images/avater-1.jpg" alt="reviewimg" class="img-fluid mr-4">
                                     <div class="media-body">
-                                        <div class="product-review">
+                                        <!--<div class="product-review">
                                             <span><i class="tf-ion-android-star"></i></span>
                                             <span><i class="tf-ion-android-star"></i></span>
                                             <span><i class="tf-ion-android-star"></i></span>
                                             <span><i class="tf-ion-android-star"></i></span>
                                             <span><i class="tf-ion-android-star"></i></span>
+                                        </div> -->
+                                        <div class="product-share mt-4">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item">
+                                                    <a href="#"><i class="tf-ion-social-facebook"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#"><i class="tf-ion-social-twitter"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a target="_blank" href="https://api.whatsapp.com/send?phone=504{{contact?.phone}}&text=CARENTELL%20Informacion%20de:%20{{ car?.description }}"><i class="tf-ion-social-whatsapp"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#"><i class="tf-ion-social-pinterest"></i></a>
+                                                </li>
+                                            </ul>
                                         </div>
-                                        <h6>Therichpost <span class="text-sm text-muted font-weight-normal ml-3">-June
-                                                23, 2019</span></h6>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum suscipit
-                                            consequuntur in, perspiciatis laudantium ipsa fugit. Iure esse saepe error
-                                            dolore quod.</p>
-                                    </div>
-                                </div>
-
-                                <div class="media review-block">
-                                    <img src="assets/images/avater-2.jpg" alt="reviewimg" class="img-fluid mr-4">
-                                    <div class="media-body">
-                                        <div class="product-review">
-                                            <span><i class="tf-ion-android-star"></i></span>
-                                            <span><i class="tf-ion-android-star"></i></span>
-                                            <span><i class="tf-ion-android-star"></i></span>
-                                            <span><i class="tf-ion-android-star"></i></span>
-                                            <span><i class="tf-ion-android-star-outline"></i></span>
-                                        </div>
-                                        <h6>Therichpost <span class="text-sm text-muted font-weight-normal ml-3">-June
-                                                23, 2019</span></h6>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum suscipit
-                                            consequuntur in, perspiciatis laudantium ipsa fugit. Iure esse saepe error
-                                            dolore quod.</p>
+                                        <h4>{{ contact?.name }}</h4>
+                                        <p>{{ contact?.address?.neighborhood }}</p>
+                                        <p>{{ contact?.address?.references }}</p>
+                                        <p>{{ contact?.address?.township?.name | titlecase }}, {{ contact?.address?.department?.name | titlecase }}</p>
                                     </div>
                                 </div>
                             </div>
 
 
-                            <div class="col-lg-5">
+                            <!-- <div class="col-lg-5">
                                 <div class="review-comment mt-5 mt-lg-0">
                                     <h4 class="mb-3">Add a Review</h4>
 
@@ -202,7 +177,7 @@
                                         <a routerLink="/product-single" class="btn btn-main btn-small">Submit Review</a>
                                     </form>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -230,4 +205,4 @@
     </div>
 </div>
 
-<app-reservations-modal modalId="exampleModal"></app-reservations-modal>
+<app-reservations-modal modalId="exampleModal" [car]="car"></app-reservations-modal>

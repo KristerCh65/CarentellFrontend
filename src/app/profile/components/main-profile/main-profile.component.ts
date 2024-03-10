@@ -17,27 +17,27 @@ export class MainProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.authService.loggedUser$.subscribe(
-      res => {
-        this.userId = res.id;
-      }
-    )
+    // this.authService.loggedUser$.subscribe(
+    //   res => {
+    //     this.userId = res.id;
+    //   }
+    // )
 
-    this.loadUserInformation();
+    // this.loadUserInformation();
   }
 
-  loadUserInformation(){
-    if(this.userId){
-      this.profileService.getProfileInformationById(this.userId)
-        .subscribe(
-          res => {
-            console.log({res})
-            if(res.messageError == null){
-              this.profileService.userInfo.next(res);
-            }
-          }
-        )
-    }
-  }
+  // loadUserInformation(){
+  //   if(this.userId){
+  //     this.profileService.getProfileInformationById(this.userId)
+  //       .subscribe(
+  //         res => {
+  //           console.log({res})
+  //           if(res.messageError == null){
+  //             this.profileService.userInfo.next(res);
+  //           }
+  //         }
+  //       )
+  //   }
+  // }
 
 }

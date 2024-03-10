@@ -1,4 +1,6 @@
-<div class="custom-control custom-checkbox" *ngFor="let cat of categories">
-    <input type="checkbox" class="custom-control-input" id="size1" [value]="cat.categoryID" (change)="onInputChange($event)">
-    <label class="custom-control-label" for="size1">{{cat.description}}</label>
+<div class="custom-control custom-checkbox">
+    <div *ngFor="let cat of categories">
+        <input type="checkbox" [name]="cat.description" [value]="cat.categoryID" (change)="onInputChange($event)">
+        {{cat.description}}
+    </div>
 </div>

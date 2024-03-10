@@ -19,7 +19,8 @@
                     <li class="list-inline-item product-feature-item"><i class="tf-ion-android-checkmark-circle"></i>Modelo</li> -->
                     <li class="list-inline-item product-feature-item"><i class="tf-ion-ios-timer-outline"></i>{{ car?.kilometers}}</li>
                     <li class="list-inline-item product-feature-item"><i class="tf-ion-android-calendar"></i>{{ car?.year}}</li>
-                    <li class="list-inline-item product-feature-item"><i class="tf-ion-cash"></i>L. {{ car?.price}}</li>
+                    <li *ngIf="car?.isSale" class="list-inline-item product-feature-item"><i class="tf-ion-cash"></i>{{ car?.price | currency: 'L' : 'symbol' : '1.0-0'}}</li>
+                    <li *ngIf="!car?.isSale" class="list-inline-item product-feature-item"><i class="tf-ion-cash"></i>{{ car?.price | currency: 'L' : 'symbol' : '1.0-0'}} por dia</li>
                 </ul>
             </div>
         </div>
