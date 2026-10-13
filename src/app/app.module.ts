@@ -8,6 +8,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
+import { DemoApiInterceptor } from './core/interceptors/demo-api.interceptor';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,10 @@ import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,
       multi: true
-    }
+    },
+    ...(environment.demo
+      ? [{ provide: HTTP_INTERCEPTORS, useClass: DemoApiInterceptor, multi: true }]
+      : [])
   ],
   bootstrap: [AppComponent]
 })

@@ -1,27 +1,34 @@
-# CarentellFrontend
+# Carentell
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
+Marketplace de venta y alquiler de vehículos construido con Angular.
 
-## Development server
+**Demo:** https://kristerch65.github.io/CarentellFrontend/
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+> La demo usa datos de ejemplo en lugar de la API real. Puedes iniciar sesión con cualquier usuario y contraseña.
 
-## Code scaffolding
+## Funcionalidades
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Búsqueda de vehículos por marca, modelo, año o color, y filtros por categoría
+- Listados de autos en venta y en alquiler, con detalle, galería de fotos y datos del vendedor
+- Registro e inicio de sesión con JWT
+- Perfil de usuario, publicación de vehículos con fotos y listado de "Mis vehículos"
+- Reserva de citas para probar un vehículo
+- Planes de suscripción mensual y formulario de pago
 
-## Build
+## Tecnologías
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Angular 14 · TypeScript · RxJS · Bootstrap · ng-bootstrap · angular-calendar · ngx-toastr · SweetAlert2
 
-## Running unit tests
+## Ejecutar localmente
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+npm install
+npm start                                # usa la API en https://localhost:44395/api/
+npx ng serve --configuration demo        # usa los datos de ejemplo, sin backend
+```
 
-## Running end-to-end tests
+Abre http://localhost:4200 (en modo demo: http://localhost:4200/CarentellFrontend/).
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Modo demo
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Con `environment.demo = true`, el interceptor [`DemoApiInterceptor`](src/app/core/interceptors/demo-api.interceptor.ts) responde las llamadas a la API con los datos de [`demo-data.ts`](src/app/core/demo/demo-data.ts). El workflow [`deploy-demo.yml`](.github/workflows/deploy-demo.yml) compila esta versión y la publica en GitHub Pages en cada push a `master`.

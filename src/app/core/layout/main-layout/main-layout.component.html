@@ -1,5 +1,9 @@
 <app-loading-spinner [isActive]="(loadingService.isLoading | async) || false"></app-loading-spinner>
 
+<div *ngIf="isDemo" class="demo-banner">
+    Versión demo con datos de ejemplo · Inicia sesión con cualquier usuario y contraseña
+</div>
+
 <app-header></app-header>
 
 <main>
